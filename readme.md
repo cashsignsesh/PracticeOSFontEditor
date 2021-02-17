@@ -22,3 +22,6 @@ i.e a 8x format 'A' :
 (It is so simple, that you can write files in this format by hand, as long as you can convert it to hexadecimal/binary somehow and write to file)
 
 The same format applies for 16x, 32x and 64x. The difference is that on 16x for example, there are 2 bytes per line and there are 16 lines (hence 16x).
+
+This is one character in this format, and there are 92x characters in a file. There is an additional byte at the start, which is a header. 
+The header is simply an indicator of which size the file is. 00000000 indicates 8x, 00000011 indicates 16x, 00001111 indicates 32x and 00111111 indicates 64x.
