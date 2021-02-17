@@ -10,11 +10,18 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PracticeOSFontEditor {
 	
 	public partial class Editor : Form {
 		
+		/// <summary>
+		/// The stored font data
+		/// I could've easily used an array here,
+		/// and probably would've been better off,
+		/// but I like lists a lot personally.
+		/// </summary>
 		private List<Byte> dataToWrite;
 		
 		private static Char[] characters={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
@@ -158,19 +165,27 @@ namespace PracticeOSFontEditor {
 		
 		private void DoneButtonClick (Object sender, EventArgs e) {
 			
-			this.userCharacterIndicator=92;
-			if (this.userCharacterIndicator==92) {
+			if (this.userCharacterIndicator==(Editor.characterCount+1)) {
 				
 				//TODO :: savefiledialog
 				SaveFileDialog sfd=new SaveFileDialog();
 				sfd.Filter="PracticeOS Font Files (*.pfont)|*.pfont";
 				sfd.RestoreDirectory=true;
+				Stream stream;
 				if (sfd.ShowDialog()==DialogResult.OK) {
 					
-					this.userCharacterIndicator=0;
-					goto done;
+					if ((stream=sfd.OpenFile())!=null) {
+						
+						stream.Write(this.dataToWrite.ToArray(),0,this.dataToWrite.Count);
+						this.userCharacterIndicator=0;
+						goto done;
+					
+					}
+					else return;
 					
 				}
+				
+				return;
 				
 			}
 			
@@ -204,7 +219,9 @@ namespace PracticeOSFontEditor {
 		
 		private void clearPanels () {
 			
-			//TODO::
+			foreach (Control c in this.drawGridPanel.Controls)
+				if (c.BackColor==Color.Black)
+					c.BackColor=Color.White;
 			
 		}
 		
