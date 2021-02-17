@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using PracticeOSFontInterpreter;
+using System.Linq;
 
 namespace FontReader {
 	
@@ -50,14 +51,14 @@ namespace FontReader {
 			PracticeOSFontInterpreter.Font f=new PracticeOSFontInterpreter.Font(this.fileName);
 			this.fontTypeLabel.Text=f.type.ToString();
 			
+			this.drawPanel.Refresh();
+			
 			using (Graphics g=this.drawPanel.CreateGraphics()) {
 				
-				using (Brush b=(Brush)Brushes.Black) {
+				g.Clear(Color.White);
 					
-					foreach (FPoint fp in f.getDataAt(index))
-						g.FillRectangle(b,new RectangleF(fp.x,fp.y,1,1));
-					
-				}
+				foreach (FPoint fp in f.getDataAt(index))
+					g.FillRectangle((fp.coloured)?Brushes.Black:Brushes.White,new RectangleF(fp.x,fp.y,1,1));
 				
 			}
 			

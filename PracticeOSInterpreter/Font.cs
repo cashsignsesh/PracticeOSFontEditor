@@ -35,6 +35,11 @@ namespace PracticeOSFontInterpreter {
 		private readonly UInt16 take;
 		
 		/// <summary>
+		/// The bits per line
+		/// </summary>
+		private readonly Byte bpl;
+		
+		/// <summary>
 		/// Create an instance of the interpreter
 		/// </summary>
 		/// <param name="file">the Practice OS Font file</param>
@@ -53,18 +58,22 @@ namespace PracticeOSFontInterpreter {
 				case 0x00:
 					this.type=FontType.x8;
 					this.take=8;
+					this.bpl=8;
 					break;
 				case 0x03:
 					this.type=FontType.x16;
 					this.take=32;
+					this.bpl=16;
 					break;
 				case 0x0F:
 					this.type=FontType.x32;
 					this.take=128;
+					this.bpl=32;
 					break;
 				case 0x3F:
 					this.type=FontType.x64;
 					this.take=512;
+					this.bpl=64;
 					break;
 				default:
 					throw new InvalidFileFormatException("Invalid header");
@@ -90,14 +99,15 @@ namespace PracticeOSFontInterpreter {
 			foreach (Byte b in this.getRawDataAt(index))
 				sb.Append(Convert.ToString(b,2).PadLeft(8,'0'));
 			
-			UInt16 x=0,y=0,line=(UInt16)(Math.Sqrt((Double)(this.take)));
+			UInt16 x=0,y=0;
+			Byte fixedBpl=(Byte)(this.bpl-1);
 			
 			foreach (Char c in sb.ToString()) {
 				
 				yield return new FPoint{x=x,y=y,coloured=c=='1'};
 				
-				if (x==line) {
-					
+				if (x==fixedBpl) {
+				
 					++y;
 					x=0;
 					

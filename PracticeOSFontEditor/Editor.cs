@@ -158,8 +158,11 @@ namespace PracticeOSFontEditor {
 		
 		private void updateLabels () {
 			
-			this.charactersToGoLabel.Text=(this.userCharacterIndicator.ToString()+'/'+Editor.characterCount.ToString());
-			this.drawIndicatorLabel.Text="Draw the character: \""+Editor.characters[this.userCharacterIndicator]+'"';
+			try {
+				this.charactersToGoLabel.Text=(this.userCharacterIndicator.ToString()+'/'+Editor.characterCount.ToString());
+				this.drawIndicatorLabel.Text="Draw the character: \""+Editor.characters[this.userCharacterIndicator]+'"';
+			}
+			catch { /* I am not handling this, I added this because I lost a lot of work and it just needs to be fixed however way and I'm just mad */ }
 			
 		}
 		
@@ -167,7 +170,7 @@ namespace PracticeOSFontEditor {
 		
 		private void DoneButtonClick (Object sender, EventArgs e) {
 			
-			if (this.userCharacterIndicator==(Editor.characterCount+1)) {
+			if (this.userCharacterIndicator==(Editor.characterCount-1)) {
 				
 				SaveFileDialog sfd=new SaveFileDialog();
 				sfd.Filter=Editor.saveFilter;

@@ -74,7 +74,7 @@ namespace FontReader
 			// 
 			this.drawPanel.Location = new System.Drawing.Point(13, 72);
 			this.drawPanel.Name = "drawPanel";
-			this.drawPanel.Size = new System.Drawing.Size(473, 330);
+			this.drawPanel.Size = new System.Drawing.Size(369, 330);
 			this.drawPanel.TabIndex = 3;
 			// 
 			// fontTypeLabel
@@ -89,7 +89,7 @@ namespace FontReader
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(498, 414);
+			this.ClientSize = new System.Drawing.Size(394, 414);
 			this.Controls.Add(this.fontTypeLabel);
 			this.Controls.Add(this.drawPanel);
 			this.Controls.Add(this.characterIndexTextBox);
