@@ -41,6 +41,8 @@ namespace PracticeOSFontEditor
 			this.drawIndicatorLabel = new System.Windows.Forms.Label();
 			this.doneButton = new System.Windows.Forms.Button();
 			this.charactersToGoLabel = new System.Windows.Forms.Label();
+			this.devCodeTextBox = new System.Windows.Forms.TextBox();
+			this.enterDevCodeButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// drawGridPanel
@@ -83,11 +85,29 @@ namespace PracticeOSFontEditor
 			this.charactersToGoLabel.Size = new System.Drawing.Size(195, 15);
 			this.charactersToGoLabel.TabIndex = 4;
 			// 
+			// devCodeTextBox
+			// 
+			this.devCodeTextBox.Location = new System.Drawing.Point(600, 554);
+			this.devCodeTextBox.Name = "devCodeTextBox";
+			this.devCodeTextBox.Size = new System.Drawing.Size(100, 20);
+			this.devCodeTextBox.TabIndex = 5;
+			// 
+			// enterDevCodeButton
+			// 
+			this.enterDevCodeButton.Location = new System.Drawing.Point(706, 554);
+			this.enterDevCodeButton.Name = "enterDevCodeButton";
+			this.enterDevCodeButton.Size = new System.Drawing.Size(19, 20);
+			this.enterDevCodeButton.TabIndex = 6;
+			this.enterDevCodeButton.UseVisualStyleBackColor = true;
+			this.enterDevCodeButton.Click += new System.EventHandler(this.EnterDevCodeButtonClick);
+			// 
 			// Editor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(808, 605);
+			this.Controls.Add(this.enterDevCodeButton);
+			this.Controls.Add(this.devCodeTextBox);
 			this.Controls.Add(this.charactersToGoLabel);
 			this.Controls.Add(this.doneButton);
 			this.Controls.Add(this.drawIndicatorLabel);
@@ -98,7 +118,10 @@ namespace PracticeOSFontEditor
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditorFormClosed);
 			this.Load += new System.EventHandler(this.EditorLoad);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button enterDevCodeButton;
+		private System.Windows.Forms.TextBox devCodeTextBox;
 		private System.Windows.Forms.Label charactersToGoLabel;
 		private System.Windows.Forms.Button doneButton;
 		private System.Windows.Forms.Label drawIndicatorLabel;

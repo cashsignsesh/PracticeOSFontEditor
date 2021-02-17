@@ -1,0 +1,10 @@
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\bin\Debug\FontReader.exe.config
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\bin\Debug\FontReader.exe
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\bin\Debug\FontReader.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\obj\Debug\FontReader.csprojResolveAssemblyReference.cache
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\obj\Debug\FontReader.MainForm.resources
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\obj\Debug\FontReader.csproj.GenerateResource.Cache
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\obj\Debug\FontReader.exe
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\obj\Debug\FontReader.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\bin\Debug\PracticeOSFontInterpreter.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\FontReader\bin\Debug\PracticeOSFontInterpreter.pdb

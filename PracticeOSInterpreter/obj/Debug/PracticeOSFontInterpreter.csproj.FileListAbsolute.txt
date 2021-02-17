@@ -1,0 +1,5 @@
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSInterpreter\obj\Debug\PracticeOSFontInterpreter.csprojResolveAssemblyReference.cache
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSInterpreter\bin\Debug\PracticeOSFontInterpreter.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSInterpreter\bin\Debug\PracticeOSFontInterpreter.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSInterpreter\obj\Debug\PracticeOSFontInterpreter.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSInterpreter\obj\Debug\PracticeOSFontInterpreter.pdb

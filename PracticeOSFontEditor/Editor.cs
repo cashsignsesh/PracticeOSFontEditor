@@ -36,6 +36,8 @@ namespace PracticeOSFontEditor {
 		
 		private Byte userCharacterIndicator;
 		
+		private const String saveFilter="PracticeOS Font Files (*.pfont)|*.pfont";
+		
 		public Editor (FontType ft) {
 			
 			const UInt16 x8=
@@ -167,9 +169,8 @@ namespace PracticeOSFontEditor {
 			
 			if (this.userCharacterIndicator==(Editor.characterCount+1)) {
 				
-				//TODO :: savefiledialog
 				SaveFileDialog sfd=new SaveFileDialog();
-				sfd.Filter="PracticeOS Font Files (*.pfont)|*.pfont";
+				sfd.Filter=Editor.saveFilter;
 				sfd.RestoreDirectory=true;
 				Stream stream;
 				if (sfd.ShowDialog()==DialogResult.OK) {
@@ -177,6 +178,7 @@ namespace PracticeOSFontEditor {
 					if ((stream=sfd.OpenFile())!=null) {
 						
 						stream.Write(this.dataToWrite.ToArray(),0,this.dataToWrite.Count);
+						stream.Close();
 						this.userCharacterIndicator=0;
 						goto done;
 					
@@ -222,6 +224,34 @@ namespace PracticeOSFontEditor {
 			foreach (Control c in this.drawGridPanel.Controls)
 				if (c.BackColor==Color.Black)
 					c.BackColor=Color.White;
+			
+		}
+		
+		private void EnterDevCodeButtonClick (Object sender, EventArgs e) {
+			
+			#if DEBUG
+			
+			if (devCodeTextBox.Text=="SAVE-EARLY") {
+				
+				SaveFileDialog sfd=new SaveFileDialog();
+				sfd.Filter=Editor.saveFilter;
+				sfd.RestoreDirectory=true;
+				Stream stream;
+				if (sfd.ShowDialog()==DialogResult.OK) {
+					
+					if ((stream=sfd.OpenFile())!=null) {
+						
+						stream.Write(this.dataToWrite.ToArray(),0,this.dataToWrite.Count);
+						this.userCharacterIndicator=0;
+						stream.Close();
+					
+					}
+					
+				}
+				
+			}
+			
+			#endif
 			
 		}
 		
