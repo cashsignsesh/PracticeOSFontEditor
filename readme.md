@@ -23,7 +23,7 @@ i.e a 8x format 'A' :
 
 The same format applies for 16x, 32x and 64x. The difference is that on 16x for example, there are 2 bytes per line and there are 16 lines (hence 16x).
 
-This is one character in this format, and there are a suggested 92x characters in a file. There is an additional byte at the start, which is a header. 
+This is one character in this format, and there are a suggested 92x characters in a file (A-Z, a-z, 0-9, +general symbols/punctuation). There is an additional byte at the start, which is a header. 
 The header is simply an indicator of which size the file is. 00000000 indicates 8x, 00000011 indicates 16x, 00001111 indicates 32x and 00111111 indicates 64x.
 
 Unlimited characters (well, up to 65535) can be supported, and using the provided class library, you can select any index to get the character. It is a very flexible library, relatively lightweight, and EXTREMELY simple.
