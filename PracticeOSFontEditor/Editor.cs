@@ -17,19 +17,46 @@ namespace PracticeOSFontEditor {
 		
 		private List<Byte> dataToWrite;
 		
+		private static Char[] characters={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+										  'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+										  '0','1','2','3','4','5','6','7','8','9','!','@','#','$','%','^','&','*','(',')','-','_','=','+','{','}',
+										  ';',':','\'','"',',','<','.','>','/','?','\\','|','`','~'};
+		
+		/// <summary>
+		/// characters.Length as a constant
+		/// </summary>
+		private const Byte characterCount=92;
+		
+		private Byte userCharacterIndicator;
+		
 		public Editor (FontType ft) {
 			
 			const UInt16 x8=
 				// 1= first byte to signify whether it is 8x,16x,32x,64x
 				1+
 				(
-					// 8 - signify the amount of rows
-					// *
-					// 8 - the bits per row
-					(8*8)
 					
-				);
+					(
+						// 8 - signify the amount of rows
+						8
+						*
+						// 8 - the bytes per row
+						1
+					)
+					
+					*
+					//The amount of characters
+					//from characters.Length
+					Editor.characterCount
+					
+				),
 			
+				x16=1+((16*2)*Editor.characterCount),
+				x32=1+((32*4)*Editor.characterCount),
+				x64=1+((64*8)*Editor.characterCount)
+				
+			;
+				
 			switch (ft) {
 					
 				case FontType.x8:
@@ -38,17 +65,17 @@ namespace PracticeOSFontEditor {
 					break;
 					
 				case FontType.x16:
-					this.dataToWrite=new List<Byte>(33);
+					this.dataToWrite=new List<Byte>(x16);
 					this.dataToWrite.Add(0x03);
 					break;
 					
 				case FontType.x32:
-					this.dataToWrite=new List<Byte>(97);
+					this.dataToWrite=new List<Byte>(x32);
 					this.dataToWrite.Add(0x0F);
 					break;
 					
 				case FontType.x64:
-					this.dataToWrite=new List<Byte>(257);
+					this.dataToWrite=new List<Byte>(x64);
 					this.dataToWrite.Add(0x3F);
 					break;
 					
@@ -77,12 +104,12 @@ namespace PracticeOSFontEditor {
 		
 		private void createDrawGrid () {
 			
-			Int32 dimension=(Int32)(Math.Sqrt(this.dataToWrite.Capacity-1)),fixedDimension=dimension-1;
+			Int32 dimension=(Int32)(Math.Sqrt((((this.dataToWrite.Capacity-1)/Editor.characterCount)*8))),fixedDimension=dimension-1,difference=(this.drawGridPanel.Height/(dimension));;
 			UInt16 ctr=0,x=0,y=0;
 			
-			while (ctr!=(dataToWrite.Capacity-1)) {
+			while (ctr!=(((dataToWrite.Capacity/Editor.characterCount)*8))) {
 				
-				Panel p=new Panel(){Width=dimension,Height=dimension,Left=(x*dimension),Top=(y*dimension),BackColor=Color.White,Name=ctr.ToString()+"_drawGridSubPanel"};
+				Panel p=new Panel(){Width=difference,Height=difference,Left=(x*(difference)),Top=(y*(difference)),BackColor=Color.White,Name=ctr.ToString()+"_drawGridSubPanel"};
 				
 				p.MouseDown+= delegate (Object sender,MouseEventArgs args) {
 					
@@ -113,11 +140,71 @@ namespace PracticeOSFontEditor {
 					++y;
 					x=0;
 				}
-				else
-					++x;
+				else ++x;
 				++ctr;
 				
 			}
+			
+		}
+		
+		private void updateLabels () {
+			
+			this.charactersToGoLabel.Text=(this.userCharacterIndicator.ToString()+'/'+Editor.characterCount.ToString());
+			this.drawIndicatorLabel.Text="Draw the character: \""+Editor.characters[this.userCharacterIndicator]+'"';
+			
+		}
+		
+		private void EditorLoad (Object sender,EventArgs e) { this.updateLabels(); }
+		
+		private void DoneButtonClick (Object sender, EventArgs e) {
+			
+			this.userCharacterIndicator=92;
+			if (this.userCharacterIndicator==92) {
+				
+				//TODO :: savefiledialog
+				SaveFileDialog sfd=new SaveFileDialog();
+				sfd.Filter="PracticeOS Font Files (*.pfont)|*.pfont";
+				sfd.RestoreDirectory=true;
+				if (sfd.ShowDialog()==DialogResult.OK) {
+					
+					this.userCharacterIndicator=0;
+					goto done;
+					
+				}
+				
+			}
+			
+			Byte tempByte=0x00,ctr=7;
+			
+			foreach (Control c in this.drawGridPanel.Controls) {
+				
+				tempByte |= (Byte)(((c.BackColor==Color.Black)?(Byte)1:(Byte)0) << ctr );
+				
+				if (ctr==0) {
+					
+					this.dataToWrite.Add(tempByte);
+					
+					tempByte=0x00;
+					ctr=7;
+					
+					continue;
+					
+				}
+				
+				--ctr;
+				
+			}
+			
+			++this.userCharacterIndicator;
+			done:
+			this.updateLabels();
+			this.clearPanels();
+			
+		}
+		
+		private void clearPanels () {
+			
+			//TODO::
 			
 		}
 		
