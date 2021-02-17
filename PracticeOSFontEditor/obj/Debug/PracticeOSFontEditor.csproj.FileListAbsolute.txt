@@ -1,0 +1,9 @@
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.csprojResolveAssemblyReference.cache
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.Editor.resources
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.MainForm.resources
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.csproj.GenerateResource.Cache
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\bin\Debug\PracticeOSFontEditor.exe.config
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\bin\Debug\PracticeOSFontEditor.exe
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\bin\Debug\PracticeOSFontEditor.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.exe
+C:\Users\Elite\Documents\SharpDevelop Projects\PracticeOSFontEditor\PracticeOSFontEditor\obj\Debug\PracticeOSFontEditor.pdb
