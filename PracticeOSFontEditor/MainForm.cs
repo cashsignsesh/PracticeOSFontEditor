@@ -30,7 +30,7 @@ namespace PracticeOSFontEditor {
 		
 		private void StartButtonClick (Object sender, EventArgs e) {
 			
-			new Editor(this.fontQualityComboBox.SelectedIndex==0?FontType.x8:((this.fontQualityComboBox.SelectedIndex==1)?FontType.x16:((this.fontQualityComboBox.SelectedIndex==2)?FontType.x32:FontType.x64))).Show();
+			new Editor((FontType)fontQualityComboBox.SelectedIndex).Show();
 			this.Hide();
 			
 		}
